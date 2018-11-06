@@ -13,8 +13,8 @@
   - `pip install virtualenvwrapper-win`
   - `pip install django==1.9.8`
   - `pip install pillow`
-
-（2）虚拟环境原理介绍：
+   
+(2)虚拟环境原理介绍：
 
 ① virtualenv ：
 - 安装virtualenv：
@@ -95,10 +95,10 @@ pymysql.install_as_MySQLdb()
   - startapp courses
   - startapp organization
   - startapp operation
-- myApp目录说明
-  - admin.py  站点配置
-  - model.py  模型
-  - views.py  视图
+- myApp目录说明	
+  - admin.py　　　　站点配置
+  - model.py　　　　模型
+  - views.py　　　　视图
 
 ## 三、激活应用
 - 在setting.py文件中，将myApp应用加入到INSTALLED_APPS选项中
@@ -120,7 +120,8 @@ INSTALLED_APPS = [
 ## 四、定义模型
 ##### 1. 概述：一个数据表对应一个模型
 ##### 2. 在models.py文件中定义模型
-![](img/mx41.png)
+　　　　　　　　　　　　　　　　![](img/mx41.png)
+
 (1)users  
 ```
 # _*_ encoding:utf-8 _*_
@@ -366,7 +367,8 @@ class Teacher(models.Model):
 - 执行迁移
 	- 执行`<migrate>`
 	- 相当于执行sql语句创建数据表
-![](img/mx51.png)
+	
+　　　　　　　　　　　　　　　　　　　![](img/mx51.png)
 
 ## 六、创建python package<apps>,用于放置所有app
 - 将创建的apps文件夹mark为root
@@ -422,7 +424,8 @@ admin.site.register(UserProfile, UserProfileAdmin)
 ```
 - 添加`httplib2`,`django-formtools`,`django-crispy-forms`,`future`,`django-import-export`等库.
 - 需要完成迁移生成xadmin表才能打开网址
-![](img/mx81.png)
+
+　　　　　　　　　　　　　　　　　　　　![](img/mx81.png)
 - urls.py文件下
 
 	```
