@@ -1,4 +1,4 @@
-# Django:mxOnline教育平台在线开发
+# Django:mxonline教育平台在线开发
 ## 一、创建mxonline项目
 ##### 1. 环境：
 (1) 本平台的开发环境
@@ -642,4 +642,48 @@ xadmin.site.register(views.CommAdminView, GlobalSettings)
 ```
 ------------------------------------------------------------------------------------
 # 前端
-## 九、添加静态文件
+## 九、配置首页和登录页面
+- 新建static文件夹，将js、css、img、images文件夹放入该目录下
+- 在templates文件夹下添加index.html文件
+- 在urls.py中添加url用来处理静态文件
+
+```
+from django.views.generic import  TemplateView
+
+urlpatterns = [
+    url(r'^xadmin/', xadmin.site.urls),
+    url('^$', TemplateView.as_view(template_name="index.html"), name="index")
+]
+```
+- TemplateView.as_view（）会将template转化为view，完成index页面的返回
+- settings.py配置静态路径
+
+```
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static")
+)
+```
+- 出现如下错误：
+
+![](img/mx91.png)
+ Your STATICFILES_DIRS setting is not a tuple or list
+解决方法如下：
+```      
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+```
+```
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [(
+    os.path.join(BASE_DIR, "static")
+)]
+```
+## 十、首页与登录
+1. 用户登录的后台逻辑
+- 配置登录url
+`url(r'^login/$', TemplateView.as_view(template_name="login.html"), name="login"),`
+- 写users自己的views
