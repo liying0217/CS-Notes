@@ -1107,8 +1107,9 @@ session是django那一部分做成的？
   `{% url 'register' %}`相当于一个过滤器，自动生成url
 
 - 路径地址转换
-  1、首先引入`{% load staticfiles %}`
-  2、`STATIC_URL = '/static/'`
+
+  1. 首先引入`{% load staticfiles %}``
+  2. `STATIC_URL = '/static/'`
 
   - (1)`<link rel="stylesheet" type="text/css" href="../css/reset.css">`
   - (2)`<link rel="stylesheet" type="text/css" href="/static/css/reset.css">`
