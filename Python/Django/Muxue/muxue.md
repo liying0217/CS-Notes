@@ -1090,13 +1090,11 @@ STATICFILES_DIRS = [(
 
     ![数据库](img/105.png)
 
-
-
-    3、django.contrib.sessions
-    session是django那一部分做成的？
-    如何将sessionid转换成user，在后台逻辑（views）当中，可以直接取request.user，UseProfile如何完成自动转换？
-    （1）settings.py的INSTALLED_APPS中有django.contrib.sessions，默认配置好，若注释掉，自动登录会失效。
-    （2）对每次的response或request做拦截，拦截之后找到其中的sessionid，通过sessionid来数据表查找，查找到原来有这个用户，解密，将sessiondata取出来，sessiondata存储了很多用户信息,直接将user给取出来了。
+3、django.contrib.sessions
+session是django那一部分做成的？
+如何将sessionid转换成user，在后台逻辑（views）当中，可以直接取request.user，UseProfile如何完成自动转换？
+（1）settings.py的INSTALLED_APPS中有django.contrib.sessions，默认配置好，若注释掉，自动登录会失效。
+（2）对每次的response或request做拦截，拦截之后找到其中的sessionid，通过sessionid来数据表查找，查找到原来有这个用户，解密，将sessiondata取出来，sessiondata存储了很多用户信息,直接将user给取出来了。
 
 ##### 3.用户的注册功能
 
@@ -1107,8 +1105,8 @@ STATICFILES_DIRS = [(
   {% url 'register' %}相当于一个过滤器，自动生成url
 
 - 路径地址转换
-  1、首先引入{% load staticfiles %}
-  2、STATIC_URL = '/static/'
+  1、首先引入`{% load staticfiles %}`
+  2、`STATIC_URL = '/static/'`
   (1)`<link rel="stylesheet" type="text/css" href="../css/reset.css">`
   (2)`<link rel="stylesheet" type="text/css" href="/static/css/reset.css">`
   (3)`<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">`
@@ -1322,19 +1320,19 @@ STATICFILES_DIRS = [(
 
         ```
         from django.contrib.auth.hashers import make_password
+        def post(self, request):
+             register_form = RegisterForm(request.POST)
+             if register_form.is_valid():
+             		user_name = request.POST.get("emai", "")
+                  pass_word = request.POST.get("password", "")
+                  user_profile = UserProfile()
+                  user_profile.username = user_name
+                  user_profile.email = user_name
+                  user_profile.password = make_password(pass_word)              						user_profile.save()
         ```
 
-  def post(self, request):
-​          register_form = RegisterForm(request.POST)
-​          if register_form.is_valid():
-​              user_name = request.POST.get("emai", "")
-​              pass_word = request.POST.get("password", "")
-​              user_profile = UserProfile()
-​              user_profile.username = user_name
-​              user_profile.email = user_name
-​              user_profile.password = make_password(pass_word)
-​              user_profile.save()
-​        ```
+
+​       
 
   - 引入send_register_email()函数
 
