@@ -1108,13 +1108,14 @@ session是django那一部分做成的？
 
 - 路径地址转换
 
-  1.  首先引入`{% load staticfiles %}`
-  2.  `STATIC_URL = '/static/'`
+  - 首先引入`{% load staticfiles %}`
 
-  - (1)`<link rel="stylesheet" type="text/css" href="../css/reset.css">`
-  - (2)`<link rel="stylesheet" type="text/css" href="/static/css/reset.css">`
-  - (3)`<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">`
-    拷贝的不再是static目录，而是一个相对路径,自动根据settings.py中的配置，自动在前面加上（STATIC_URL = '/static/'),以后在修改路径的时候会很容易。
+  - `STATIC_URL = '/static/'`
+    - (1)`<link rel="stylesheet" type="text/css" href="../css/reset.css">`
+    - (2)`<link rel="stylesheet" type="text/css" href="/static/css/reset.css">`
+    - (3)`<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">`
+
+拷贝的不再是static目录，而是一个相对路径,自动根据settings.py中的配置，自动在前面加上（STATIC_URL = '/static/'),以后在修改路径的时候会很容易。
 
 - 完成views.py与url相关简单代码
 
